@@ -9,7 +9,9 @@ def online_micro_count():
         os.getenv("ENPHASE_CLIENT_SECRET"),
         os.getenv("ENPHASE_API_KEY"),
     )
-    enphase.load_enphase_creds()
+    enphase.load_enphase_creds(
+        os.getenv("ENPHASE_EMAIL"), os.getenv("ENPHASE_PASSWORD")
+    )
 
     system_id = os.getenv("ENPHASE_SYSTEM_ID")
 
