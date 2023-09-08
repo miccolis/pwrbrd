@@ -125,6 +125,8 @@ class EnphaseClient:
 
             if current_time < refresh_token_content["exp"]:
                 token_data = self.refresh_enphase_token(token_data["refresh_token"])
+                if token_data is None:
+                    raise Exception("Unable to refresh token")
                 with open("token.json", "w", encoding="utf-8") as token_file:
                     token_file.write(json.dumps(token_data))
                 self.creds = token_data
