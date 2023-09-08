@@ -120,7 +120,7 @@ class EnphaseClient:
                 return None
 
             refresh_token_content = json.loads(
-                base64.b64decode(token_data["refresh_token"].split(".")[1])
+                base64.b64decode(token_data["refresh_token"].split(".")[1] + '==')
             )
 
             if current_time < refresh_token_content["exp"]:
